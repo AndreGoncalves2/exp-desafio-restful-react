@@ -8,8 +8,11 @@ export default createGlobalStyle`
     }
 
     body {
-        font-family: 'Roboto Slab', serif;
         font-size: 16px;
         background-color: ${({ theme }) => theme.COLORS.BACKGROUND_300};
+    }
+
+    body, button, a {
+        font-family: 'Roboto Slab', serif;
     }
 `

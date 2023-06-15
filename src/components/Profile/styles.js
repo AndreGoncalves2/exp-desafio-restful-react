@@ -1,0 +1,40 @@
+import styled from 'styled-components';
+
+export const Container = styled.div`
+    display: flex;
+    gap: 9px;
+    align-items: center;
+
+    > img {
+        height: 64px;
+        width: 64px;
+
+        border-radius: 50%;
+        border-bottom: 1px solid ${({ theme }) => theme.COLORS.GRAY_200 };
+    }
+
+    > div {
+        display: flex;
+        flex-direction: column;
+
+        h2 {
+            font-size: 14px;
+            font-weight: 700;
+
+            color: ${({ theme }) => theme.COLORS.WHITE};
+        }
+
+        button {
+            background: none;
+            border: none;
+            
+            align-self: end;
+
+            font-size: 14px;
+            line-height: 18px;
+
+            color: ${({ theme }) => theme.COLORS.GRAY_100};
+        }
+    }
+
+`;
