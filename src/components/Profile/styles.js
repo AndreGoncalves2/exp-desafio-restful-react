@@ -20,6 +20,7 @@ export const Container = styled.div`
         h2 {
             font-size: 14px;
             font-weight: 700;
+            white-space: nowrap;
 
             color: ${({ theme }) => theme.COLORS.WHITE};
         }
