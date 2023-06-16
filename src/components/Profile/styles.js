@@ -34,6 +34,8 @@ export const Container = styled.div`
             font-size: 14px;
             line-height: 18px;
 
+            cursor: pointer;
+
             color: ${({ theme }) => theme.COLORS.GRAY_100};
         }
     }

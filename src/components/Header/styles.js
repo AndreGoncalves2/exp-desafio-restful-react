@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    padding: 24px 123px;
+    width: 100%;
+    height: fit-content;
+    
+    padding: 24px 0;
     display: flex;
     justify-content: space-between;
     gap: 64px;

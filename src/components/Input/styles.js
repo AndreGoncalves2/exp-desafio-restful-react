@@ -8,7 +8,12 @@ export const Container = styled.input`
     border-radius: 10px;
     border: none;
 
-    color: ${({ theme }) => theme.COLORS.GRAY_100};
+    color: ${({ theme }) => theme.COLORS.WHITE};
 
     background-color: ${({ theme }) => theme.COLORS.BACKGROUND_100};
+
+    &::placeholder {
+        color: ${({ theme }) => theme.COLORS.GRAY_100};
+    }
+    
 `;
