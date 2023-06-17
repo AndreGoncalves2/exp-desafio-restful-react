@@ -32,19 +32,3 @@ export const Container = styled.div`
 
 `;
 
-export const ListTags = styled.ul`
-    margin-top: 15px;
-    list-style: none;
-
-    display: flex;
-    gap:8px;
-
-    > li {
-        padding: 5px 16px;
-        font-size: 12px;
-        border-radius: 8px; 
-
-        background-color: ${({ theme }) => theme.COLORS.BACKGROUND_200};
-        color: ${({ theme }) => theme.COLORS.WHITE_200};
-    }
-`;
