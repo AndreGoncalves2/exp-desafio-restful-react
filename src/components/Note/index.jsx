@@ -1,7 +1,6 @@
 import { Container } from './style';
 import { ListTags } from '../ListTags';
 import { Rating } from '../Rating';
-import { ListTags } from '../ListTags';
 
 export function Note({ title, description, tags }) {
     return (
@@ -10,11 +9,7 @@ export function Note({ title, description, tags }) {
             <Rating/>
             <p>{description}</p>
 
-            <ListTags>
-                {tags.map(tag => (
-                    <li key={tag}>{tag}</li>
-                ))}
-            </ListTags>
+            <ListTags tags={tags}/>
         </Container>
     );
 }
