@@ -18,7 +18,7 @@ export const Container = styled.button`
 
     
     font-size: 16px;
-    line-height: 21px;
+    line-height: 20px;
 
     cursor: pointer;
 

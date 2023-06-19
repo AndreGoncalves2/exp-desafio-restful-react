@@ -6,7 +6,7 @@ export const Container = styled.div`
     padding: 0 123px 58px 123px;
 
     > main {
-        max-height: 100%;
+        max-height: 450px;
         overflow-y: auto;
     }
 
