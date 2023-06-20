@@ -5,12 +5,13 @@ export const Container = styled.div`
     width: 100%;
     display: flex;
     align-items: center;
+    
     gap: 12px;
     border-radius: 10px;
+    padding-inline: 12px;
 
     background-color: ${({ theme }) => theme.COLORS.BACKGROUND_100};
     color: ${({ theme }) => theme.COLORS.GRAY_100};
-    padding-left: 12px;
 
     > input {
         height: 56px;

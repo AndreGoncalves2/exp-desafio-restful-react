@@ -15,4 +15,8 @@ export default createGlobalStyle`
     body, button, a {
         font-family: 'Roboto Slab', serif;
     }
+
+    button, a {
+        cursor: pointer;
+    }
 `
