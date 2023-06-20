@@ -19,7 +19,6 @@ export const Container = styled.div`
         outline: none;
         
         border-radius: 10px;
-        border: none;
     
         color: ${({ theme }) => theme.COLORS.WHITE};
         background: transparent;

@@ -1,9 +1,10 @@
-import { Container, NoteHeader } from "./styles";
+import { Container, NoteHeader, NewTags, HighLighter, Controls } from "./styles";
 
 import { Header } from "../../components/Header";
 import { TextButton } from "../../components/TextButton";
 import { Input } from "../../components/Input";
-import { HighLighter } from "../../components/HighLighter";
+import { NewTag } from "../../components/NewTag";
+import { Button } from "../../components/Button";
 
 export function CreateNote() {
     return (
@@ -29,8 +30,27 @@ export function CreateNote() {
                 <textarea
                     placeholder="Observações"
                 />
+                
+                <HighLighter>
+                    <h2>Marcadores</h2>
 
-                <HighLighter/>
+                    <NewTags>
+                        <NewTag value="React"/>
+                        <NewTag isNew/>
+                    </NewTags>
+                </HighLighter>
+
+                <Controls>
+                    <Button 
+                        title="Excluir filme"
+                        className="delete"
+                    />
+
+                    <Button 
+                        title="Salvar alterações"
+                        className="save"
+                    />
+                </Controls>
             </main>
         </Container>
     );

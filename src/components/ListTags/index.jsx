@@ -4,7 +4,9 @@ export function ListTags({ tags }) {
     return (
         <Container>
             {tags.map(tag => (
-                <li key={tag}>{tag}</li>
+                <li key={tag}>
+                    <button>{tag}</button>    
+                </li>
             ))}
         </Container>
     );

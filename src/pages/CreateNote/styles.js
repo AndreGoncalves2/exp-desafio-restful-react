@@ -20,7 +20,7 @@ export const Container = styled.div`
         }
 
         > textarea {
-            height: 275px;
+            min-height: 100px;
             width: 100%;
     
             padding: 19px 16px;
@@ -45,4 +45,41 @@ export const NoteHeader = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 40px;
+`;
+
+export const NewTags = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: ${({ theme }) => theme.COLORS.BLACK};
+
+    padding: 16px;
+    border-radius: 8px;
+
+`;
+
+export const HighLighter = styled.div`
+
+    > h2 {
+        font-size: 20px;
+        color: ${({ theme }) => theme.COLORS.GRAY_300};
+        
+        margin-bottom: 24px;
+    }
+`;
+
+export const Controls = styled.div`
+    display: flex;
+    gap: 40px;
+
+    >.save {
+        color: ${({ theme }) => theme.COLORS.BACKGROUND_200};
+    }
+
+    >.delete {
+        background-color: ${({ theme }) => theme.COLORS.BLACK};
+        color: ${({ theme }) => theme.COLORS.VIOLET};
+    }
 `;
