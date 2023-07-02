@@ -8,7 +8,9 @@ export function Header() {
         <Container>
             <h1>RocketMovies</h1>
             <Input placeholder="Pesquisar pelo titulo" />
-            <Profile/>
+            <Profile 
+                onClick={() => console.log("foi")}
+            />
         </Container>
     );
 }

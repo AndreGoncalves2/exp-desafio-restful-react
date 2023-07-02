@@ -1,19 +1,22 @@
 import { Container } from './styles';
 import { AiOutlineClose, AiOutlinePlus } from 'react-icons/ai';
 
-export function NewTag({ isNew, value, ...rest }){
+export function NewTag({ isNew, value, onChange, ...rest }){
     return(
         <Container $isNew={isNew}>
             <input
                 type="text"
                 readOnly={!isNew}
-                {...rest}
                 placeholder='Novo marcador'
                 value={value}
+                onChange={onChange}
             >
             </input>
 
-            <button>
+            <button
+                type='button'
+                {...rest}
+            >
                 {isNew? <AiOutlinePlus /> : <AiOutlineClose />}
             </button>
         </Container>

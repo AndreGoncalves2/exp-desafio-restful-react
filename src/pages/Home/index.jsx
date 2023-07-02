@@ -6,14 +6,21 @@ import { Button } from '../../components/Button';
 import { FiPlus } from 'react-icons/fi';
 import { Note } from '../../components/Note';
 
+import { useNavigate } from 'react-router-dom';
+
 export function Home() {
+    const navigate = useNavigate();
     return (
         <Container>
             <Header/>
             
             <ButtonDiv>
                 <h2>Meus Filmes</h2>
-                <Button title="Adicionar filme" icon={FiPlus}/>
+                <Button 
+                    title="Adicionar filme" 
+                    icon={FiPlus}
+                    onClick={() => navigate("/new")}
+                />
             </ButtonDiv>
 
             <main>

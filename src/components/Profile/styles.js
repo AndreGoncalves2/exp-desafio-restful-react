@@ -11,6 +11,7 @@ export const Container = styled.div`
 
         border-radius: 50%;
         border-bottom: 1px solid ${({ theme }) => theme.COLORS.GRAY_200 };
+        cursor: pointer;
     }
 
     > div {
@@ -23,6 +24,7 @@ export const Container = styled.div`
             white-space: nowrap;
 
             color: ${({ theme }) => theme.COLORS.WHITE};
+            cursor: pointer;
         }
 
         button {

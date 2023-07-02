@@ -1,10 +1,12 @@
 import { Container } from './styles';
 
-export function Input({  icon: Icon, ...rest}) {
+export function Input({  icon: Icon, placeholder,...rest }) {
     return (
-        <Container >
+        <Container {...rest} >
             {Icon}
-            <input {...rest}/>
+            <input 
+                placeholder={placeholder}
+            />
         </Container>
     );
 }
