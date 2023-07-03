@@ -34,7 +34,8 @@ export function CreateNote() {
         const note = {
             title,
             description,
-            rating
+            rating,
+            tags
         };
 
         try {
