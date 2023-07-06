@@ -12,18 +12,16 @@ import { api } from '../../services/api';
 
 export function Home() {
     const [notes, setNotes] = useState([]);
-    const [tags, setTags] = useState([]);
     const navigate = useNavigate();
+
     useEffect(() => {
         async function renderNotes() {
             const { data } = await api.get("/notes");
-            
             setNotes(data.notes);
-            // setTags(data.tags);
-            console.log(data.notes);
         };
         renderNotes();
-    }, [])
+    }, []);
+
     return (
         <Container>
             <Header/>
@@ -44,12 +42,12 @@ export function Home() {
                             key={index}
                             title={note.title}
                             description={note.description}
-                            tags={['Ficção Cientifica','Drama','Familia']}
+                            tags={note.tags}
+                            onClick={() => navigate(`/preview/${note.id}`)}
                         />
                     ))
-                }
-                
+                }   
             </main>
         </Container>
     );
-}
+};

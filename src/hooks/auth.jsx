@@ -40,11 +40,14 @@ function AuthProvider({ children }) {
             await api.put("/users", userUpdated);
             window.localStorage.setItem("@movienotes:user", JSON.stringify(userUpdated));
             alert("Alterações aplicadas!");
+            navigate("/");
         } catch (error) {
             if (error.response) {
                 alert(error.response.data.message);
+                window.location.reload();
             } else {
                 alert(error);
+                window.location.reload();
             };
         };
     };

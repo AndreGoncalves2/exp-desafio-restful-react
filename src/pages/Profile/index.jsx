@@ -31,7 +31,6 @@ export function Profile() {
         };
         const userUpdated = Object.assign(user, updatedUser);
         updateProfile(userUpdated);
-        navigate("/");
     };
 
     return (
