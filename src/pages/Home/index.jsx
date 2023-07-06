@@ -16,11 +16,9 @@ export function Home() {
     const navigate = useNavigate();
     useEffect(() => {
         async function renderNotes() {
-            const { data } = await api.get("/notes");
-            
+            const { data }  = await api.get("/notes");
             setNotes(data.notes);
-            // setTags(data.tags);
-            console.log(data.notes);
+            console.log(notes)
         };
         renderNotes();
     }, [])
@@ -39,14 +37,14 @@ export function Home() {
 
             <main>
                 {
-                    notes.map((note, index) => (
-                        <Note 
-                            key={index}
-                            title={note.title}
-                            description={note.description}
-                            tags={['Ficção Cientifica','Drama','Familia']}
-                        />
-                    ))
+                    // notes.map((note, index) => (
+                    //     <Note 
+                    //         key={index}
+                    //         title={note.title}
+                    //         description={note.description}
+                    //         tags={['Ficção Cientifica','Drama','Familia']}
+                    //     />
+                    // ))
                 }
                 
             </main>
