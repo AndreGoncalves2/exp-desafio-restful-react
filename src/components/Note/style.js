@@ -4,6 +4,7 @@ export const Container = styled.div`
     margin-top: 37px;
     padding: 32px;
     border-radius: 16px;
+    cursor: pointer;
 
     background-color: ${({ theme }) => theme.COLORS.VIOLET_LIGHT};
 

@@ -6,8 +6,19 @@ import { Rating } from '../../components/Rating';
 import { ListTags } from '../../components/ListTags';
 
 import { AiOutlineClockCircle } from 'react-icons/ai';
+import { useEffect, useState } from 'react';
 
-export function MoviePreview({ title, name, time }) {
+import { api } from '../../services/api';
+
+export function MoviePreview() {
+    const [note, setNote]   = useState([]);
+    useEffect(() => {
+        async function renderNote() {
+            const { data } = await api.get("/notes/7");
+            console.log(data);
+        }
+        renderNote();
+    }, [])
     return (
         <Container>
             <Header />

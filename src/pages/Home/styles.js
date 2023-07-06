@@ -6,10 +6,9 @@ export const Container = styled.div`
     padding: 0 123px 58px 123px;
 
     > main {
-        max-height: 450px;
+        max-height: 470px;
         overflow-y: auto;
     }
-
 `;
 
 export const ButtonDiv = styled.div`

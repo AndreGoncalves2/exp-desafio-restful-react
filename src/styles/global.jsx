@@ -10,6 +10,8 @@ export default createGlobalStyle`
     body {
         font-size: 16px;
         background-color: ${({ theme }) => theme.COLORS.BACKGROUND_300};
+        height: 100vh;
+        overflow: hidden;
     }
 
     body, button, a {

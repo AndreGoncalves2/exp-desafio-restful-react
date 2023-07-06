@@ -48,6 +48,7 @@ export const NoteHeader = styled.div`
 `;
 
 export const NewTags = styled.div`
+    gap: 9px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;

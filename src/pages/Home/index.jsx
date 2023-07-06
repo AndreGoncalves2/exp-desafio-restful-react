@@ -12,16 +12,16 @@ import { api } from '../../services/api';
 
 export function Home() {
     const [notes, setNotes] = useState([]);
-    const [tags, setTags] = useState([]);
     const navigate = useNavigate();
+
     useEffect(() => {
         async function renderNotes() {
-            const { data }  = await api.get("/notes");
+            const { data } = await api.get("/notes");
             setNotes(data.notes);
-            console.log(notes)
         };
         renderNotes();
-    }, [])
+    }, []);
+
     return (
         <Container>
             <Header/>
@@ -37,17 +37,17 @@ export function Home() {
 
             <main>
                 {
-                    // notes.map((note, index) => (
-                    //     <Note 
-                    //         key={index}
-                    //         title={note.title}
-                    //         description={note.description}
-                    //         tags={['Ficção Cientifica','Drama','Familia']}
-                    //     />
-                    // ))
-                }
-                
+                    notes.map((note, index) => (
+                        <Note 
+                            key={index}
+                            title={note.title}
+                            description={note.description}
+                            tags={note.tags}
+                            onClick={() => navigate(`/preview/${note.id}`)}
+                        />
+                    ))
+                }   
             </main>
         </Container>
     );
-}
+};
