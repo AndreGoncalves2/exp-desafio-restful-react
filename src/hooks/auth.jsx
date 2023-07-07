@@ -1,10 +1,12 @@
 import { useContext, createContext, useState, useEffect } from "react";
 import { api } from "../services/api";
+import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
 
 function AuthProvider({ children }) {
     const [ data, setData] = useState({});
+
 
     async function signIn({ email, password}) {
 
@@ -36,11 +38,11 @@ function AuthProvider({ children }) {
     };
 
     async function updateProfile(userUpdated) {
+
         try {
             await api.put("/users", userUpdated);
             window.localStorage.setItem("@movienotes:user", JSON.stringify(userUpdated));
             alert("Alterações aplicadas!");
-            navigate("/");
         } catch (error) {
             if (error.response) {
                 alert(error.response.data.message);
