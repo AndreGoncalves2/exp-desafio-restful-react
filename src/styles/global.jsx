@@ -6,7 +6,15 @@ export default createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
     }
+    *::-webkit-scrollbar {
+        width: 8px;
+    } 
+   
+    *::-webkit-scrollbar-thumb {   
+        background-color: #FF859B;  
+        border-radius: 10px;
 
+    }
     body {
         font-size: 16px;
         background-color: ${({ theme }) => theme.COLORS.BACKGROUND_300};

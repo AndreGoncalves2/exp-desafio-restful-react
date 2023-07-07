@@ -3,14 +3,17 @@ import { Container } from './styles';
 import { Input } from '../Input';
 import { Profile } from '../Profile';
 
-export function Header() {
+export function Header({ onChange, onInput }) {
     return (
         <Container>
             <h1>RocketMovies</h1>
-            <Input placeholder="Pesquisar pelo titulo" />
-            <Profile 
-                onClick={() => console.log("foi")}
-            />
+            { onInput &&
+                <Input 
+                    placeholder="Pesquisar pelo titulo" 
+                    onChange={onChange} 
+                />
+            }
+            <Profile />
         </Container>
     );
 }

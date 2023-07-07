@@ -1,4 +1,4 @@
-import { Container, NoteHeader, NewTags, HighLighter, Controls } from "./styles";
+import { Container, NoteHeader, NewTags, HighLighter } from "./styles";
 
 import { Header } from "../../components/Header";
 import { TextButton } from "../../components/TextButton";
@@ -102,18 +102,12 @@ export function CreateNote() {
                     </NewTags>
                 </HighLighter>
 
-                <Controls>
-                    <Button 
-                        title="Excluir filme"
-                        className="delete"
-                    />
-
-                    <Button 
-                        title="Salvar alterações"
-                        className="save"
-                        onClick={handleSaveNote}
-                    />
-                </Controls>
+                <Button 
+                    title="Salvar alterações"
+                    className="save"
+                    onClick={handleSaveNote}
+                />
+               
             </main>
         </Container>
     );

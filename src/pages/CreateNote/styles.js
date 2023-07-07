@@ -37,6 +37,10 @@ export const Container = styled.div`
             &::placeholder {
                 color: ${({ theme }) => theme.COLORS.GRAY_100};
             }
+
+            >.save {
+                color: ${({ theme }) => theme.COLORS.BACKGROUND_200};
+            }
         }
     }
 `;
@@ -68,19 +72,5 @@ export const HighLighter = styled.div`
         color: ${({ theme }) => theme.COLORS.GRAY_300};
         
         margin-bottom: 24px;
-    }
-`;
-
-export const Controls = styled.div`
-    display: flex;
-    gap: 40px;
-
-    >.save {
-        color: ${({ theme }) => theme.COLORS.BACKGROUND_200};
-    }
-
-    >.delete {
-        background-color: ${({ theme }) => theme.COLORS.BLACK};
-        color: ${({ theme }) => theme.COLORS.VIOLET};
     }
 `;

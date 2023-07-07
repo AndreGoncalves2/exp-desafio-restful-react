@@ -8,6 +8,7 @@ export const Container = styled.div`
     > main {
         max-height: 470px;
         overflow-y: auto;
+        margin-left: 8px;
     }
 `;
 

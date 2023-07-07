@@ -12,19 +12,24 @@ import { api } from '../../services/api';
 
 export function Home() {
     const [notes, setNotes] = useState([]);
+    const [search, setSearch] = useState("");
+
     const navigate = useNavigate();
 
     useEffect(() => {
         async function renderNotes() {
-            const { data } = await api.get("/notes");
-            setNotes(data.notes);
+            const { data } = await api.get(`/notes?title=${search}`);
+        setNotes(data.notes);
         };
         renderNotes();
-    }, []);
+    }, [search]);
 
     return (
         <Container>
-            <Header/>
+            <Header
+                onInput={true}
+                onChange={e => setSearch(e.target.value)}
+            />
             
             <ButtonDiv>
                 <h2>Meus Filmes</h2>
@@ -43,6 +48,7 @@ export function Home() {
                             title={note.title}
                             description={note.description}
                             tags={note.tags}
+                            rating={note.rating}
                             onClick={() => navigate(`/preview/${note.id}`)}
                         />
                     ))

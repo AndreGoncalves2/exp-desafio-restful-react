@@ -48,5 +48,9 @@ export const Container = styled.div`
             text-align: justify;
             color: ${({ theme }) => theme.COLORS.WHITE};
         }
+
+        .save {
+            margin-top: 20px;
+        }
     }
 `; 
