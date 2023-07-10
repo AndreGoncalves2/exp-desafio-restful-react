@@ -42,6 +42,7 @@ function AuthProvider({ children }) {
             await api.put("/users", userUpdated);
             window.localStorage.setItem("@movienotes:user", JSON.stringify(userUpdated));
             alert("Alterações aplicadas!");
+            window.location.reload();
         } catch (error) {
             if (error.response) {
                 alert(error.response.data.message);

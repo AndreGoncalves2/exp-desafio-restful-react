@@ -30,7 +30,8 @@ export function Profile() {
             newPassword
         };
         const userUpdated = Object.assign(user, updatedUser);
-        updateProfile(userUpdated)
+        console.log(userUpdated)
+        updateProfile(userUpdated);
     };
 
     return (
