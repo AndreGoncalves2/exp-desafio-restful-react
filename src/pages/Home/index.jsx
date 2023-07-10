@@ -19,8 +19,9 @@ export function Home() {
     useEffect(() => {
         async function renderNotes() {
             const { data } = await api.get(`/notes?title=${search}`);
-        setNotes(data.notes);
+            setNotes(data.notes);
         };
+
         renderNotes();
     }, [search]);
 

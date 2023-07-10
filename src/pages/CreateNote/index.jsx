@@ -38,6 +38,10 @@ export function CreateNote() {
             tags
         };
 
+        if (!title || !description || !rating ) {
+            return alert("Por favor preencha todos os campos.");
+        };
+        
         try {
             await api.post("/notes", note);
             alert("Nota criada com sucesso !");

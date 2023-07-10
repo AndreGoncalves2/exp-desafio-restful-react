@@ -6,9 +6,11 @@ export function Note({ title, description, tags, rating, ...rest }) {
     return (
         <Container {...rest}>
             <h2>{title}</h2>
-            <Rating rating={rating}/>
-            <p>{description}</p>
 
+            <Rating rating={rating}/>
+
+            <p>{description}</p>
+            
             <ListTags tags={tags}/>
         </Container>
     );

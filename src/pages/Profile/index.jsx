@@ -33,7 +33,7 @@ export function Profile() {
             newPassword
         };
         const userUpdated = Object.assign(user, updatedUser);
-        await updateProfile({ userUpdated, avatarFile })
+        await updateProfile({ user: userUpdated, avatarFile })
     };
 
     async function handleAvatar(event) {
@@ -69,17 +69,15 @@ export function Profile() {
                 <Input
                     type="text"
                     icon={<AiOutlineUser/>}
-                    placeholder="Nome"
+                    placeholder={name}
                     onChange={(e) => setName(e.target.value)}
-                    value={name}
                 />
 
                 <Input
                     type="email"
                     icon={<AiOutlineMail/>}
-                    placeholder="E-mail"
+                    placeholder={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    value={email}
                 />
                 
                 <Input
