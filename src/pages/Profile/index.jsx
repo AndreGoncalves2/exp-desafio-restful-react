@@ -10,17 +10,20 @@ import { Button } from '../../components/Button';
 
 import { useState } from 'react'
 import { useAuth } from '../../hooks/auth';
-import { useNavigate } from 'react-router-dom';
 
+import  avatarPlaceholder from '../../assets/avatar_placeholder.svg';
 export function Profile() {
     const { user, updateProfile } = useAuth();
 
     const [name, setName] = useState(user.name);
     const [email, setEmail] = useState(user.email);
+
     const [password, setPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
 
-    const navigate = useNavigate();
+    const avatarUrl = user.avatar ? `${api.default.baseurl}/files/%{user.avatar}` : avatarPlaceholder;
+    const [avatarFile, setAvatarFile] = useState(null);
+    const [avatar, setAvatar] = useState(avatarUrl);
 
     async function handleUpdate() {
         const updatedUser = {
@@ -30,7 +33,16 @@ export function Profile() {
             newPassword
         };
         const userUpdated = Object.assign(user, updatedUser);
-        updateProfile(userUpdated)
+        await updateProfile({ userUpdated, avatarFile })
+    };
+
+    async function handleAvatar(event) {
+        
+        const file = event.target.files[0];
+        setAvatarFile(file);
+
+        const imagePreview = URL.createObjectURL(file);
+        setAvatar(imagePreview);
     };
 
     return (
@@ -40,7 +52,7 @@ export function Profile() {
             </Header>
 
             <Avatar>
-                <img src="https://github.com/andregoncalves2.png" alt="Foto do usuário"/>
+                <img src={avatar} alt="Foto do usuário"/>
 
                 <label htmlFor="Avatar">
                     <AiOutlineCamera/>
@@ -48,6 +60,7 @@ export function Profile() {
                     <input
                         id="Avatar"
                         type="file" 
+                        onChange={handleAvatar}
                      />
                 </label>
             </Avatar>
