@@ -52,6 +52,7 @@ function AuthProvider({ children }) {
             
             alert("Alterações aplicadas!");
             window.location.reload();
+            
         } catch (error) {
             if (error.response) {
                 alert(error.response.data.message);

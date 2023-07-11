@@ -5,13 +5,23 @@ import { useAuth } from '../../hooks/auth';
 import { api } from '../../services/api';
 
 import  avatarPlaceholder from '../../assets/avatar_placeholder.svg';
+import { useEffect, useState } from 'react';
 
 export function Profile() {
     const navigate = useNavigate();
     const { signOut, user } = useAuth();
+    const [avatar, setAvatar] = useState();
 
-    const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder;
-
+    useEffect(() => {
+        fetch(`${api.defaults.baseURL}/files/${user.avatar}`).then((ev) => {
+            if (ev.ok) {
+                setAvatar(`${api.defaults.baseURL}/files/${user.avatar}`);
+            } else {
+                setAvatar(avatarPlaceholder);
+            };
+        });
+    }, []);
+    
     function handleSignOut() {
         signOut();
         navigate("/");
@@ -35,7 +45,7 @@ export function Profile() {
 
             <img 
                 onClick={() => navigate("/profile")}
-                src={avatarUrl}
+                src={avatar}
                 alt="Foto do usuário" 
             />
         </Container>

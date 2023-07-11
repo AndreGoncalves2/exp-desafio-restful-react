@@ -15,6 +15,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 export function MoviePreview() {
     const [note, setNote]   = useState([]);
+    const [avatar, setAvatar] = useState();
 
     const { user } = useAuth();
     const { id } = useParams();
@@ -36,6 +37,17 @@ export function MoviePreview() {
             setNote(data.note);
         };
         renderNote();
+        
+    }, []);
+
+    useEffect(() => {
+        fetch(`${api.defaults.baseURL}/files/${user.avatar}`).then((ev) => {
+            if (ev.ok) {
+                setAvatar(`${api.defaults.baseURL}/files/${user.avatar}`);
+            } else {
+                setAvatar(avatarPlaceholder);
+            };
+        });
     }, []);
 
     return (
@@ -43,16 +55,20 @@ export function MoviePreview() {
             <Header />
 
             <main>
-            <TextButton/>
+                <TextButton/>
+
                 <div className='rating'>
                     <h2>{note.title}</h2>
                     <Rating rating={note.rating} />
                 </div>
 
                 <div className='author-inf'>
-                    <img src="https://github.com/andregoncalves2.png" alt="Foto do usuário" />
+                    <img src={avatar} alt="Foto do usuário" />
+
                     <h3>{`Por ${user.name}`}</h3>
+
                     <AiOutlineClockCircle/>
+
                     <h3>{note.updated_at}</h3>
                 </div>
                 {

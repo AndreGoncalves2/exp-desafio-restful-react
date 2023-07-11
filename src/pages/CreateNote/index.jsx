@@ -79,6 +79,7 @@ export function CreateNote() {
                 </NoteHeader>
 
                 <textarea
+                    type="text"
                     placeholder="Observações"
                     onChange={(e) => setDescription(e.target.value)}
                 />
