@@ -10,8 +10,10 @@ import { Button } from '../../components/Button';
 
 import { useState } from 'react'
 import { useAuth } from '../../hooks/auth';
+import { api } from '../../services/api';
 
 import  avatarPlaceholder from '../../assets/avatar_placeholder.svg';
+
 export function Profile() {
     const { user, updateProfile } = useAuth();
 
@@ -21,10 +23,10 @@ export function Profile() {
     const [password, setPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
 
-    const avatarUrl = user.avatar ? `${api.default.baseurl}/files/%{user.avatar}` : avatarPlaceholder;
+    const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder;
     const [avatarFile, setAvatarFile] = useState(null);
     const [avatar, setAvatar] = useState(avatarUrl);
-
+    
     async function handleUpdate() {
         const updatedUser = {
             name,
@@ -51,32 +53,34 @@ export function Profile() {
                 <TextButton/>
             </Header>
 
-            <Avatar>
-                <img src={avatar} alt="Foto do usuário"/>
-
-                <label htmlFor="Avatar">
-                    <AiOutlineCamera/>
-
-                    <input
-                        id="Avatar"
-                        type="file" 
-                        onChange={handleAvatar}
-                     />
-                </label>
-            </Avatar>
 
             <Form>
+                <Avatar>
+                    <img src={avatar ? avatar : avatarPlaceholder } alt="Foto do usuário"/>
+
+                    <label htmlFor="Avatar">
+                        <AiOutlineCamera/>
+
+                        <input
+                            id="Avatar"
+                            type="file" 
+                            onChange={handleAvatar}
+                        />
+                    </label>
+                </Avatar>
                 <Input
                     type="text"
                     icon={<AiOutlineUser/>}
-                    placeholder={name}
+                    value={name}
+                    placeholder="Nome"
                     onChange={(e) => setName(e.target.value)}
                 />
 
                 <Input
                     type="email"
                     icon={<AiOutlineMail/>}
-                    placeholder={email}
+                    value={email}
+                    placeholder="E-mail"
                     onChange={(e) => setEmail(e.target.value)}
                 />
                 

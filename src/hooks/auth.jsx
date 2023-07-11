@@ -36,11 +36,20 @@ function AuthProvider({ children }) {
         setData({});
     };
 
-    async function updateProfile(userUpdated ) {
-        const { user } = userUpdated;
+    async function updateProfile({ user, avatarFile }) {
         try {
+            if (avatarFile) {
+                const fileUploadForm = new FormData();
+
+                fileUploadForm.append("avatar", avatarFile);
+                const response = await api.patch("/users/avatar", fileUploadForm);
+
+                user.avatar = response.data.avatar;
+            };
+            
             await api.put("/users", user);
             window.localStorage.setItem("@movienotes:user", JSON.stringify(user));
+            
             alert("Alterações aplicadas!");
             window.location.reload();
         } catch (error) {

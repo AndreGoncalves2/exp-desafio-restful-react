@@ -2,10 +2,15 @@ import { Container } from './styles';
 
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/auth';
+import { api } from '../../services/api';
+
+import  avatarPlaceholder from '../../assets/avatar_placeholder.svg';
 
 export function Profile() {
     const navigate = useNavigate();
     const { signOut, user } = useAuth();
+
+    const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder;
 
     function handleSignOut() {
         signOut();
@@ -30,7 +35,7 @@ export function Profile() {
 
             <img 
                 onClick={() => navigate("/profile")}
-                src="https://github.com/andregoncalves2.png" 
+                src={avatarUrl}
                 alt="Foto do usuário" 
             />
         </Container>

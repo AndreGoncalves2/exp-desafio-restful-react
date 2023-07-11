@@ -13,6 +13,7 @@ export function Header({ onChange, onInput }) {
                     onChange={onChange} 
                 />
             }
+            
             <Profile />
         </Container>
     );
