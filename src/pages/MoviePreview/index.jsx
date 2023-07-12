@@ -17,10 +17,11 @@ import  avatarPlaceholder from '../../assets/avatar_placeholder.svg';
 
 export function MoviePreview() {
     const [note, setNote]   = useState([]);
-    const [avatar, setAvatar] = useState();
 
     const { user } = useAuth();
     const { id } = useParams();
+
+    const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder;
 
     const navigate = useNavigate();
     
@@ -38,19 +39,8 @@ export function MoviePreview() {
             const { data } = await api.get(`/notes/${id}`);
             setNote(data.note);
         };
-        renderNote();
         
-    }, []);
-
-    useEffect(() => {
-
-        fetch(`${api.defaults.baseURL}/files/${user.avatar}`).then((ev) => {
-            if (ev.ok) {
-                setAvatar(`${api.defaults.baseURL}/files/${user.avatar}`);
-            } else {
-                setAvatar(avatarPlaceholder);
-            };
-        });
+        renderNote();
     }, []);
 
     return (
@@ -66,7 +56,7 @@ export function MoviePreview() {
                 </div>
 
                 <div className='author-inf'>
-                    <img src={avatar} alt="Foto do usuário" />
+                    <img src={avatarUrl} alt="Foto do usuário" />
 
                     <h3>{`Por ${user.name}`}</h3>
 

@@ -8,7 +8,7 @@ import { TextButton } from '../../components/TextButton';
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useAuth } from '../../hooks/auth';
 import { api } from '../../services/api';
 
@@ -23,8 +23,9 @@ export function Profile() {
     const [password, setPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
 
+    const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder;
+
     const [avatarFile, setAvatarFile] = useState(null);
-    const [avatarUrl, setAvatarUrl] = useState("");
     const [avatar, setAvatar] = useState(avatarUrl);
     
     async function handleUpdate() {
@@ -34,6 +35,7 @@ export function Profile() {
             password,
             newPassword
         };
+
         const userUpdated = Object.assign(user, updatedUser);
         await updateProfile({ user: userUpdated, avatarFile })
     };
@@ -45,27 +47,13 @@ export function Profile() {
 
         const imagePreview = URL.createObjectURL(file);
         setAvatar(imagePreview);
-
     };
-    
-    useEffect(() => {
-        fetch(`${api.defaults.baseURL}/files/${user.avatar}`).then((ev) => {
-            if (ev.ok) {
-                setAvatar(`${api.defaults.baseURL}/files/${user.avatar}`);
-                
-            } else {
-                setAvatar(avatarPlaceholder);
-            }
-        })
-
-    }, []);
 
     return (
         <Container>
             <Header>
                 <TextButton/>
             </Header>
-
 
             <Form>
                 <Avatar>
