@@ -13,6 +13,8 @@ import { useAuth } from '../../hooks/auth';
 import { api } from '../../services/api';
 import { useNavigate, useParams } from 'react-router-dom';
 
+import  avatarPlaceholder from '../../assets/avatar_placeholder.svg';
+
 export function MoviePreview() {
     const [note, setNote]   = useState([]);
     const [avatar, setAvatar] = useState();
@@ -41,6 +43,7 @@ export function MoviePreview() {
     }, []);
 
     useEffect(() => {
+
         fetch(`${api.defaults.baseURL}/files/${user.avatar}`).then((ev) => {
             if (ev.ok) {
                 setAvatar(`${api.defaults.baseURL}/files/${user.avatar}`);

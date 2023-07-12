@@ -21,6 +21,10 @@ export function CreateNote() {
     const navigate = useNavigate();
 
     function tagsAdd() {
+        if (newTag.length <= 0) {
+            return alert("Escreva um marcador para adicionar");
+        };
+
         setTags(prevent => [...prevent, newTag]);
         setNewTag("");
     };
