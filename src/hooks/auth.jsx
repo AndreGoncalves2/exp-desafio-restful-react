@@ -51,15 +51,12 @@ function AuthProvider({ children }) {
             window.localStorage.setItem("@movienotes:user", JSON.stringify(user));
             
             alert("Alterações aplicadas!");
-            window.location.reload();
             
         } catch (error) {
             if (error.response) {
                 alert(error.response.data.message);
-                window.location.reload();
             } else {
                 alert(error);
-                window.location.reload();
             };
         };
     };
