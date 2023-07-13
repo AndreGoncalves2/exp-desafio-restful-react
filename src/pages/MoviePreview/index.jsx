@@ -14,18 +14,24 @@ import { api } from '../../services/api';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import  avatarPlaceholder from '../../assets/avatar_placeholder.svg';
+import moment from 'moment';
 
 export function MoviePreview() {
     const [note, setNote]   = useState([]);
-
+    const [newData, setNewData]   = useState("");
+    
     const { user } = useAuth();
     const { id } = useParams();
+    
+    let newDate = moment(note.updated_at).format("DD/MM/YYYY HH:mm:ss");
+    // newDate = moment(newDate).add(-3, "hours");
+    setNewData(newDate)
+    console.log(newDate);
 
     const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder;
 
     const navigate = useNavigate();
     
- 
     async function handleDelete() {
 
         if (confirm("Tem certeza que deseja excluir essa nota ?")) {
@@ -62,7 +68,7 @@ export function MoviePreview() {
 
                     <AiOutlineClockCircle/>
 
-                    <h3>{note.updated_at}</h3>
+                    <h3>{newData}</h3>
                 </div>
                 {
                     note.tags &&
