@@ -51,6 +51,8 @@ export const Container = styled.div`
 
             text-align: justify;
             color: ${({ theme }) => theme.COLORS.WHITE};
+            overflow-y: auto;
+            max-height: 40vh;
         }
 
         .save {

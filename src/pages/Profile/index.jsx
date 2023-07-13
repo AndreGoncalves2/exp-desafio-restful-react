@@ -8,7 +8,7 @@ import { TextButton } from '../../components/TextButton';
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useAuth } from '../../hooks/auth';
 import { api } from '../../services/api';
 
@@ -35,6 +35,7 @@ export function Profile() {
             password,
             newPassword
         };
+
         const userUpdated = Object.assign(user, updatedUser);
         await updateProfile({ user: userUpdated, avatarFile })
     };
@@ -53,7 +54,6 @@ export function Profile() {
             <Header>
                 <TextButton/>
             </Header>
-
 
             <Form>
                 <Avatar>

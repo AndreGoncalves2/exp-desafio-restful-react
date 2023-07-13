@@ -35,7 +35,6 @@ export function MoviePreview() {
     };
     
     const dateFormatted = moment(new Date ((note.updated_at + "z"))).format("DD.MM.YYYY HH:mm:ss");
-    console.log(dateFormatted.toString());
 
     useEffect(() => {
         async function renderNote() {
