@@ -14,16 +14,17 @@ import { api } from '../../services/api';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import  avatarPlaceholder from '../../assets/avatar_placeholder.svg';
+import moment from 'moment/moment';
 
 export function MoviePreview() {
     const [note, setNote]   = useState([]);
-    const [avatar, setAvatar] = useState();
 
     const { user } = useAuth();
     const { id } = useParams();
 
     const navigate = useNavigate();
-    
+
+    const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder;
  
     async function handleDelete() {
 
@@ -32,6 +33,9 @@ export function MoviePreview() {
             navigate("/");
         };
     };
+    
+    const dateFormatted = moment(new Date ((note.updated_at + "z"))).format("DD.MM.YYYY HH:mm:ss");
+    console.log(dateFormatted.toString());
 
     useEffect(() => {
         async function renderNote() {
@@ -40,17 +44,6 @@ export function MoviePreview() {
         };
         renderNote();
         
-    }, []);
-
-    useEffect(() => {
-
-        fetch(`${api.defaults.baseURL}/files/${user.avatar}`).then((ev) => {
-            if (ev.ok) {
-                setAvatar(`${api.defaults.baseURL}/files/${user.avatar}`);
-            } else {
-                setAvatar(avatarPlaceholder);
-            };
-        });
     }, []);
 
     return (
@@ -66,13 +59,13 @@ export function MoviePreview() {
                 </div>
 
                 <div className='author-inf'>
-                    <img src={avatar} alt="Foto do usuário" />
+                    <img src={avatarUrl} alt="Foto do usuário" />
 
                     <h3>{`Por ${user.name}`}</h3>
 
                     <AiOutlineClockCircle/>
 
-                    <h3>{note.updated_at}</h3>
+                    <h3>{dateFormatted}</h3>
                 </div>
                 {
                     note.tags &&

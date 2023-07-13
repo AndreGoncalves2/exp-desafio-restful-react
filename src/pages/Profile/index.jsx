@@ -23,8 +23,9 @@ export function Profile() {
     const [password, setPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
 
+    const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder;
+    
     const [avatarFile, setAvatarFile] = useState(null);
-    const [avatarUrl, setAvatarUrl] = useState("");
     const [avatar, setAvatar] = useState(avatarUrl);
     
     async function handleUpdate() {
@@ -45,20 +46,7 @@ export function Profile() {
 
         const imagePreview = URL.createObjectURL(file);
         setAvatar(imagePreview);
-
     };
-    
-    useEffect(() => {
-        fetch(`${api.defaults.baseURL}/files/${user.avatar}`).then((ev) => {
-            if (ev.ok) {
-                setAvatar(`${api.defaults.baseURL}/files/${user.avatar}`);
-                
-            } else {
-                setAvatar(avatarPlaceholder);
-            }
-        })
-
-    }, []);
 
     return (
         <Container>

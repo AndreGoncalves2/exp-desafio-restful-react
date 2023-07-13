@@ -4,8 +4,8 @@ export const Container = styled.div`
     padding-inline: 123px;
         
     > main {
-        overflow-y: auto;
-
+        overflow-y: auto;        
+        
         > a {
             margin-top: 40px;
         }
@@ -44,6 +44,11 @@ export const Container = styled.div`
         
         > p {
             margin-top: 40px;
+            padding-right: 8px;
+            
+            max-height: 35vh;
+            overflow: auto;
+
             text-align: justify;
             color: ${({ theme }) => theme.COLORS.WHITE};
         }
