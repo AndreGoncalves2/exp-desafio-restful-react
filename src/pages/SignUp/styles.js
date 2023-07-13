@@ -6,7 +6,7 @@ import backgroundImg from '../../assets/backSignIn.png'
 export const Container = styled.div`
   height: 100vh;
   display: grid;
-  grid-template-columns: 45% 55%;
+  grid-template-columns: minmax(340px, 641px) auto;
   `;
 
 export const Form = styled.form`

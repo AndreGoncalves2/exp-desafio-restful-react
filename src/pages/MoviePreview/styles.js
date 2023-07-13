@@ -46,13 +46,11 @@ export const Container = styled.div`
             margin-top: 40px;
             padding-right: 8px;
             
-            max-height: 35vh;
+            max-height: 40vh;
             overflow: auto;
 
             text-align: justify;
             color: ${({ theme }) => theme.COLORS.WHITE};
-            overflow-y: auto;
-            max-height: 40vh;
         }
 
         .save {
