@@ -77,6 +77,9 @@ export function CreateNote() {
 
                     <Input
                         type="text"
+                        max="5"
+                        min="0"
+                        maxLength="1"
                         placeholder="Sua nota (de 0 a 5)"
                         onChange={(e) => setRating(e.target.value)}
                     />

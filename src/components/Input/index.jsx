@@ -5,6 +5,7 @@ export function Input({  icon: Icon, placeholder, type, value, onChange, ...rest
         <Container {...rest} >
             {Icon}
             <input 
+                {...rest}
                 value={value}
                 type={type}
                 placeholder={placeholder}
